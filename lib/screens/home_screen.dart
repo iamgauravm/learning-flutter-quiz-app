@@ -8,11 +8,27 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigo,
+      backgroundColor: const Color.fromARGB(255, 17, 22, 51),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            Container(
+              width: 300,
+              height: 300,
+              decoration: BoxDecoration(
+                color: Colors.white30,
+                borderRadius: BorderRadius.circular(150)
+              ),
+              child: Center(
+                child: Text("?",
+                style: TextStyle(
+                  fontSize: 250,
+                  color: Colors.amberAccent,
+                ),),
+              ),
+            ),
+            SizedBox(height: 25,),
             Text(
               'Quiz Game',
               style: TextStyle(
@@ -21,14 +37,16 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 25,
             ),
             OutlinedButton(
               onPressed: onTap,
               child: Text(
-                'Start',
+                'Start Now',
                 style: TextStyle(
-                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.amber,
+                  
                 ),
               ),
             )

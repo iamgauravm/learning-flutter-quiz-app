@@ -35,7 +35,7 @@ class ResultScreen extends StatelessWidget {
 
 
     return Scaffold(
-      backgroundColor: Colors.indigo,
+      backgroundColor: const Color.fromARGB(255, 17, 22, 51),
       body: SizedBox(
         width: double.infinity,
         child: Padding(
@@ -46,67 +46,79 @@ class ResultScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text("Your answered $_correctAnswerCount out of $_questionsCount questions correctly!."),
-                SizedBox(height: 15,),
-                SizedBox(
-                  height: 400,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                     ...getSummaryData.map((item) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                                width: 30,
-                                height: 30,
-                                // padding: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                    color: !(item['correct'] as bool)
-                                        ? Colors.redAccent
-                                        : Colors.greenAccent,
-                                    borderRadius: BorderRadius.circular(25)),
-                                child: Center(
-                                  child: Text(
-                                    ((item['question_index'] as int) + 1).toString(),
-                                    style: TextStyle(
-                                      color: Colors.black,
+                Text("Your answered $_correctAnswerCount out of $_questionsCount questions correctly!.",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24
+                ),),
+                SizedBox(height: 25,),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    border: Border.all(),
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white24
+                  ),
+                  child: SizedBox(
+                    height: 400,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                       ...getSummaryData.map((item) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 5),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                  width: 30,
+                                  height: 30,
+                                  // padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      color: !(item['correct'] as bool)
+                                          ? Colors.redAccent
+                                          : Colors.greenAccent,
+                                      borderRadius: BorderRadius.circular(25)),
+                                  child: Center(
+                                    child: Text(
+                                      ((item['question_index'] as int) + 1).toString(),
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                      ),
                                     ),
-                                  ),
-                                )),
-                                SizedBox(width: 10,),
-                            Expanded(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,                        
-                                children: [
-                                  Text(item['question'].toString(),
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16
-                                  ),),
-                                  Text(item['choosen_answer'].toString(),
-                                  style: TextStyle(
-                                    color: !(item['correct'] as bool)
-                                        ? Colors.redAccent
-                                        : Colors.greenAccent,
-                                  ),),
-                                  // Text(item['correct_answer'].toString())
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      );
-                    }),
-                    
-                      ],
+                                  )),
+                                  SizedBox(width: 10,),
+                              Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,                        
+                                  children: [
+                                    Text(item['question'].toString(),
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16
+                                    ),),
+                                    Text(item['choosen_answer'].toString(),
+                                    style: TextStyle(
+                                      color: !(item['correct'] as bool)
+                                          ? Colors.redAccent
+                                          : Colors.greenAccent,
+                                    ),),
+                                    // Text(item['correct_answer'].toString())
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      }),
+                      
+                        ],
+                      ),
                     ),
                   ),
                 ),
-               SizedBox(height: 15,),
+               SizedBox(height: 25,),
                AnswerButton(label: 'Back', onTap: onBack),
               ],
             ),
